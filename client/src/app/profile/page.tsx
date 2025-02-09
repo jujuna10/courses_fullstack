@@ -260,7 +260,7 @@ function Page() {
                   <div className="absolute top-20 transition-all duration-500 ease-in-out right-0">
                     {studentProperties.map((prop) => (
                       <p key={prop} className="text-white text-[18px]">
-                        {`${prop.charAt(0).toUpperCase() + prop.slice(1)}: ${(userInfo?.student as any)?.[prop] || ''}`}
+                        {`${prop.charAt(0).toUpperCase() + prop.slice(1)}: ${(userInfo?.student as Record<string, any>)?.[prop] || ''}`}
                       </p>
                     ))}
                     <p 

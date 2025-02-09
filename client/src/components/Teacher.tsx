@@ -22,14 +22,14 @@ function Teacher() {
     const images = [teacher1, teacher2, teacher3, teacher4, teacher5, teacher6];
 
 
-    const text = [
-          "The Python teacher will guide you through programming basics, data analysis, web development, and automation techniques. The course covers libraries like NumPy, Pandas, and Flask. Project: A small web app or data analysis tool.",
-          "The JavaScript teacher will teach you modern web technologies, including React and Node.js. The course focuses on creating dynamic websites and applications. Project: An interactive web page.",
-          "The UI/UX teacher will teach you design fundamentals, user research, and prototyping techniques using Figma. Project: A modernized mobile app design.",
-          "The iOS and Android development teacher will teach you Swift and Kotlin to build mobile applications. Project: A basic functional mobile app.",
-          "The Bootstrap teacher will show you how to create responsive and aesthetically pleasing websites. Project: A multi-page responsive website.",
-          "The Testing and Management teacher will teach you QA fundamentals, test automation, and agile project management. Project: A test plan and report for a software application."
-        ];
+    // const text = [
+    //       "The Python teacher will guide you through programming basics, data analysis, web development, and automation techniques. The course covers libraries like NumPy, Pandas, and Flask. Project: A small web app or data analysis tool.",
+    //       "The JavaScript teacher will teach you modern web technologies, including React and Node.js. The course focuses on creating dynamic websites and applications. Project: An interactive web page.",
+    //       "The UI/UX teacher will teach you design fundamentals, user research, and prototyping techniques using Figma. Project: A modernized mobile app design.",
+    //       "The iOS and Android development teacher will teach you Swift and Kotlin to build mobile applications. Project: A basic functional mobile app.",
+    //       "The Bootstrap teacher will show you how to create responsive and aesthetically pleasing websites. Project: A multi-page responsive website.",
+    //       "The Testing and Management teacher will teach you QA fundamentals, test automation, and agile project management. Project: A test plan and report for a software application."
+    //     ];
 
     const images2 = [py,js,puzzle,ios,android,bootstrap,test]
 
