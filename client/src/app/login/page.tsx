@@ -1,9 +1,9 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useUrlParams } from '../contexts/urlContext'
+// import { useUrlParams } from '../contexts/urlContext'
 
-function page() {
+function Page() {
 
     
     const [userLogin,setUserLogin] = useState({
@@ -11,19 +11,7 @@ function page() {
         email: ''
     })
     const router = useRouter()
-    const { setUrlParams } = useUrlParams();
-
-    // useEffect(() => {
-    //     if (userLogin.name && userLogin.email) {
-    //         console.log("Setting URL Params:", userLogin.name, userLogin.email);
-    //         setUrlParams({
-    //             name: userLogin.name,
-    //             id: userLogin.email,
-    //         });
-    //     }
-    // }, [userLogin, setUrlParams]);
-    
-
+    // const { setUrlParams } = useUrlParams();
 
     
 
@@ -63,9 +51,7 @@ function page() {
             }))
         }
 
-    const routingToLogin = () => {
-        
-    }
+
 
 
   return (
@@ -84,4 +70,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

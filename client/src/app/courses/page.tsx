@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 function Page() {
     const [searchResult,setSearchResult] = useState<string>('All courses')
     const [sureOpen,setSureOpen] = useState<boolean>(false)
-    const [sureAnswer,setSureAnswer] = useState<string>('')
+    const [_sureAnswer,setSureAnswer] = useState<string>('')
     const [courseIndex,setCourseIndex] = useState(0)
     const router = useRouter();
     const { urlParams } = useUrlParams();
@@ -51,9 +51,9 @@ function Page() {
             }
         }
 
-    const back = () => {
-        router.push(`/profile?name=${urlParams.name}&id=${urlParams.id}`);
-    }
+    // const back = () => {
+    //     router.push(`/profile?name=${urlParams.name}&id=${urlParams.id}`);
+    // }
 
     interface Course {
         id:number

@@ -6,7 +6,6 @@ import Navbar from "@/components/Navbar";
 import Prices from "@/components/Prices";
 import Reviews from "@/components/Reviews";
 import Teacher from "@/components/Teacher";
-import Image from "next/image";
 
 export default function Home() {
   return (

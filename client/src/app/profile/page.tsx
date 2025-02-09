@@ -33,7 +33,7 @@ type Stat = {
 
 
 
-function page() {
+function Page() {
 
 
     const [userInfo,setUserInfo] = useState<UserInfo | null>(null)
@@ -43,7 +43,7 @@ function page() {
     const [statisticData,setStatisticData] = useState<Stat[]>([])
     const searchParams = useSearchParams()
     const id = searchParams.get('id')
-    const studentName = searchParams.get('name')
+    // const studentName = searchParams.get('name')
 
     const router = useRouter()
 
@@ -58,7 +58,6 @@ function page() {
     const { setUrlParams } = useUrlParams();
     useEffect(() => {
             if (userInfo) {
-                // console.log("Setting URL Params:", userInfo.name, userInfo.email);
                 setUrlParams({
                     name: userInfo.name,
                     id: userInfo.number,
@@ -346,4 +345,4 @@ function page() {
 )
 }
 
-export default page
+export default Page

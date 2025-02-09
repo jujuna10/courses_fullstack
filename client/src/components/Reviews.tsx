@@ -57,7 +57,7 @@ function Reviews() {
 
         <div className="mx-2 transition-all duration-500 transform scale-100 z-10 bg-white pb-5 w-[28%] mt-12 flex flex-col gap-5 rounded-[20px]">
           <Image src={images[current]} alt="Current" className="rounded-lg object-cover w-[400px] h-[300px]" />
-          <p className='text-center'>"{text[current]}"</p>
+          <p className='text-center'>&quot;{text[current]}&quot;</p>
           <p className='text-right pr-5 font-bold'>{names[current]}</p>
 
         </div>
