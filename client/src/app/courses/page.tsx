@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { useUrlParams } from '../contexts/urlContext'
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -12,6 +12,7 @@ function Page() {
     const { urlParams } = useUrlParams();
     const searchParams = useSearchParams();
     console.log(sureAnswer)
+
     
     useEffect(() => {
         const name = searchParams.get('name');
@@ -124,7 +125,9 @@ function Page() {
     
 
     return (
+            <Suspense fallback={<div>loading</div>}>
         <div className='bg-gradient-to-b from-[#111015] via-[#0c0c18] to-[#07081a] relative overflow-hidden w-full h-screen p-5 flex flex-col gap-36'>
+
             <div>
                 <input type="text" name="course" id="course" placeholder='Search course' className='w-full py-4 px-5 rounded-[20px] border-[1px] text-white border-blue-500 focus:border-[2px] focus:border-blue-700 bg-gray-500 bg-transparent focus:outline-none' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchResult(e.target.value)} />
             </div>
@@ -162,7 +165,10 @@ function Page() {
                         </div>
                     </div>
             )}
+
         </div>
+        </Suspense>
+
     )
 }
 

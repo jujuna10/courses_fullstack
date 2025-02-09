@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
@@ -29,7 +29,6 @@ type Stat = {
   duration:number;
   homeworks:string
 }
-
 
 
 
@@ -238,6 +237,8 @@ function Page() {
 
     return (
       <div className='px-12 w-full bg-gradient-to-b h-screen from-[#111015] via-[#0c0c18] to-[#07081a]'>
+        <Suspense fallback={<div>loading</div>}>
+
         <p className='text-white text-[20px] pt-5 hover:cursor-pointer' onClick={routeToCourses}>Buy course</p>
         <div>
           {/* name and lastname */}
@@ -340,7 +341,7 @@ function Page() {
             </div>
           </div>
         </div>
-
+        </Suspense>
       </div>
 )
 }
