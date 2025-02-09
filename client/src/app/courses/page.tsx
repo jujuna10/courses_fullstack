@@ -6,11 +6,12 @@ import { useRouter, useSearchParams } from 'next/navigation';
 function Page() {
     const [searchResult,setSearchResult] = useState<string>('All courses')
     const [sureOpen,setSureOpen] = useState<boolean>(false)
-    const [_sureAnswer,setSureAnswer] = useState<string>('')
+    const [sureAnswer,setSureAnswer] = useState<string>('')
     const [courseIndex,setCourseIndex] = useState(0)
     const router = useRouter();
     const { urlParams } = useUrlParams();
     const searchParams = useSearchParams();
+    console.log(sureAnswer)
     
     useEffect(() => {
         const name = searchParams.get('name');
@@ -18,7 +19,7 @@ function Page() {
         if (!name && !id && (urlParams.name || urlParams.id)) {
             router.push(`/profile?name=${urlParams.name}&id=${urlParams.id}`);
         }
-    }, [urlParams, searchParams]);
+    }, [urlParams, searchParams,router]);
 
     const name = searchParams.get('name');
     const userNumber = searchParams.get('id');
