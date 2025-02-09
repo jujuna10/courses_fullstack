@@ -63,7 +63,7 @@ function Page() {
                     id: userInfo.number,
                 });
             }
-        }, [userInfo]);
+        }, [userInfo,setUrlParams]);
     
 
     
@@ -155,7 +155,7 @@ function Page() {
     // const coursesId = userInfo?.courses?.map(course => course.course_id - 1) || [];
 
 
-    const studentProperties = ['name', 'lastName', 'phone', 'age', 'email', 'number'];
+    const studentProperties:string[] = ['name', 'lastName', 'phone', 'age', 'email', 'number'];
 
 
     const avgAttendance = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
@@ -183,7 +183,7 @@ function Page() {
         };
         fetchData();
       }
-    }, [id, userInfo, courseIds]);
+    }, [id, userInfo, courseIds, avgAttendance, avgScore, roundedDuration, homework]);
    
 
 

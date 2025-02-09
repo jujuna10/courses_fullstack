@@ -156,7 +156,7 @@ function Page() {
                         <div className='flex flex-col gap-5 justify-center items-center'>
                             <p className='text-white'>Are you sure?</p>
                             <div className='flex gap-5 items-center'>
-                                    <button className='text-white hover:bg-white hover:text-black px-2 py-1 rounded-[5px]' onClick={(e) => {setSureOpen(false); setSureAnswer('yes'); send();}}>Yes</button>
+                                    <button className='text-white hover:bg-white hover:text-black px-2 py-1 rounded-[5px]' onClick={() => {setSureOpen(false); setSureAnswer('yes'); send();}}>Yes</button>
                                     <button className='text-white hover:bg-white hover:text-black px-2 py-1 rounded-[5px]' onClick={() => {setSureOpen(false); setSureAnswer('no')}}>No</button>
                             </div>
                         </div>
