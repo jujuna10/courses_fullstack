@@ -30,6 +30,16 @@ type Stat = {
   homeworks:string
 }
 
+function SearchParamsHandler({ onIdChange }: { onIdChange: (id: string | null) => void }) {
+  const searchParams = useSearchParams()
+  const id = searchParams.get('id')
+  
+  useEffect(() => {
+    onIdChange(id)
+  }, [id, onIdChange])
+
+  return null
+}
 
 
 function Page() {
@@ -40,8 +50,11 @@ function Page() {
     const [showDetail,setShowDetail] = useState<boolean>(false)
     const [courseIds, setCourseIds] = useState<number[]>([]);
     const [statisticData,setStatisticData] = useState<Stat[]>([])
-    const searchParams = useSearchParams()
-    const id = searchParams.get('id')
+    const [id,setId] = useState<string | null>(null)
+
+    // const searchParams = useSearchParams()
+    // const id = searchParams.get('id')
+    // console.log(typeof(id),'typeof')
     // const studentName = searchParams.get('name')
 
     const router = useRouter()
@@ -237,8 +250,9 @@ function Page() {
 
     return (
       <div className='px-12 w-full bg-gradient-to-b h-screen from-[#111015] via-[#0c0c18] to-[#07081a]'>
-        <Suspense fallback={<div>loading</div>}>
-
+        <Suspense>
+          <SearchParamsHandler onIdChange={setId} />
+        </Suspense>
         <p className='text-white text-[20px] pt-5 hover:cursor-pointer' onClick={routeToCourses}>Buy course</p>
         <div>
           {/* name and lastname */}
@@ -341,7 +355,6 @@ function Page() {
             </div>
           </div>
         </div>
-        </Suspense>
       </div>
 )
 }
