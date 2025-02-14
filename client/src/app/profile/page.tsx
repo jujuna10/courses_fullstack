@@ -250,7 +250,7 @@ function Page() {
 
     return (
       <div className='px-12 w-full bg-gradient-to-b h-screen from-[#111015] via-[#0c0c18] to-[#07081a]'>
-        <Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
           <SearchParamsHandler onIdChange={setId} />
         </Suspense>
         <p className='text-white text-[20px] pt-5 hover:cursor-pointer' onClick={routeToCourses}>Buy course</p>
