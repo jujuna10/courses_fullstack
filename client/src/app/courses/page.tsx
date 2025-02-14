@@ -3,11 +3,36 @@ import React, { Suspense, useEffect, useState } from 'react'
 import { useUrlParams } from '../contexts/urlContext'
 import { useRouter, useSearchParams } from 'next/navigation';
 
+function SearchParamsHandler({
+    onIdChange,
+  }: {
+    onIdChange: (params: { userNumber: string | null; name: string | null }) => void;
+  }) {
+    const searchParams = useSearchParams();
+    const userNumber = searchParams.get('userNumber');
+    const name = searchParams.get('name');
+  
+    useEffect(() => {
+      onIdChange({ userNumber, name });
+    }, [userNumber, name, onIdChange]);
+  
+    return null;
+  }
+
+
 function Page() {
     const [searchResult,setSearchResult] = useState<string>('All courses')
     const [sureOpen,setSureOpen] = useState<boolean>(false)
     const [sureAnswer,setSureAnswer] = useState<string>('')
     const [courseIndex,setCourseIndex] = useState(0)
+    const [params, setParams] = useState<{ userNumber: string | null; name: string | null }>({
+        userNumber: null,
+        name: null,
+      });
+      
+      const handleIdChange = (newParams: { userNumber: string | null; name: string | null }) => {
+        setParams(newParams);
+      };
     const router = useRouter();
     const { urlParams } = useUrlParams();
     const searchParams = useSearchParams();
@@ -15,16 +40,16 @@ function Page() {
 
     
     useEffect(() => {
-        const name = searchParams.get('name');
-        const id = searchParams.get('id');
-        if (!name && !id && (urlParams.name || urlParams.id)) {
+        // const name = searchParams.get('name');
+        // const id = searchParams.get('id');
+        if (!params.name && !params.userNumber && (urlParams.name || urlParams.id)) {
             router.push(`/profile?name=${urlParams.name}&id=${urlParams.id}`);
         }
     }, [urlParams, searchParams,router]);
 
-    const name = searchParams.get('name');
-    const userNumber = searchParams.get('id');
-    console.log(name,'name')
+    // const name = searchParams.get('name');
+    // const userNumber = searchParams.get('id');
+    // console.log(name,'name')
 
     
 
@@ -45,7 +70,7 @@ function Page() {
                 const data = await response.json()
                 console.log(data,'data')
                 
-                router.push(`/profile?name=${name}&id=${userNumber}`)
+                router.push(`/profile?name=${params.name}&id=${params.userNumber}`)
                 
 
             }catch(error){
@@ -102,7 +127,7 @@ function Page() {
         teacher: courses[courseIndex].teacher,
         price: courses[courseIndex].price,
         level: courses[courseIndex].level,
-        userNumber: userNumber !== null ? Number(userNumber) : 0,
+        userNumber: params.userNumber !== null ? Number(params.userNumber) : 0,
     };
     
     
@@ -121,13 +146,15 @@ function Page() {
 
     console.log(courseIndex,'course')
 
-    console.log(userNumber,'userNumber')
+    console.log(params.userNumber,'userNumber')
     
 
     return (
-            <Suspense fallback={<div>loading</div>}>
         <div className='bg-gradient-to-b from-[#111015] via-[#0c0c18] to-[#07081a] relative overflow-hidden w-full h-screen p-5 flex flex-col gap-36'>
-
+            
+            <Suspense fallback={<div>Loading...</div>}>
+                <SearchParamsHandler onIdChange={handleIdChange} />
+             </Suspense>
             <div>
                 <input type="text" name="course" id="course" placeholder='Search course' className='w-full py-4 px-5 rounded-[20px] border-[1px] text-white border-blue-500 focus:border-[2px] focus:border-blue-700 bg-gray-500 bg-transparent focus:outline-none' onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchResult(e.target.value)} />
             </div>
@@ -167,7 +194,6 @@ function Page() {
             )}
 
         </div>
-        </Suspense>
 
     )
 }
